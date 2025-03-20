@@ -3,15 +3,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import logo_hotel from '../img/logo_hotel.png';
 const Navigation = () => {
   return (
-    <Navbar expand="lg" className="bg-body-primary">
+    <Navbar bg="dark" variant="dark" expand="lg" className="bg-body-primary">
     <Container>
-      <Navbar.Brand href="#home">Hotel Los Alamos</Navbar.Brand>
+      <Navbar.Brand href="#home"><img src={logo_hotel} height="60"></img></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
+        <Nav className="ms-auto">
           <Nav.Link href="#">Inicio</Nav.Link>
           <NavDropdown title="Habitaciones" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Estandar</NavDropdown.Item>
