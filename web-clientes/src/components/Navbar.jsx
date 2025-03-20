@@ -5,6 +5,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo_hotel from '../img/logo_hotel.png';
 const Navigation = () => {
+  /* funcion para scrollear a secciones especificas de la pagina
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };*/
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="bg-body-primary">
     <Container>

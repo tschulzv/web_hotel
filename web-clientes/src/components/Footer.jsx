@@ -5,8 +5,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";  // Social 
 
 const Footer = () => {
   return (
-    <footer className="py-3"
-    style={{ backgroundColor: '#3E7CB1', color: 'white' }}>
+    <footer className="py-3 bg-dark text-white">
         <Container>
             <Row>
             {/* columna de redes sociales */}
@@ -37,7 +36,7 @@ const Footer = () => {
                         placeholder="Ingresa tu correo"
                         className="mr-2"
                     />
-                    <Button variant="primary">Subscribirse</Button>
+                    <Button variant="secondary">Subscribirse</Button>
                     </Form>
                 </div>
             </Col>
