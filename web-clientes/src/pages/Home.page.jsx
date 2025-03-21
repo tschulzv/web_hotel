@@ -5,8 +5,6 @@ import IconDescription from '../components/IconDescription';
 import { FaSwimmingPool, FaWifi, FaDumbbell } from "react-icons/fa";
 import { MdLocalLaundryService, MdOutlineRestaurant, MdRoomService } from "react-icons/md";
 import hotel from '../img/hotel.jpg';
-import boda from '../img/boda.jpg';
-import restaurante from '../img/restaurante.jpg';
 
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -48,7 +46,6 @@ const Home = () => {
         </Col>
       </Row>
 
-    
 
       {/* Sección de Servicios */}
       <Row className="d-flex align-items-center justify-content-center">
@@ -96,7 +93,7 @@ const Home = () => {
           <IconDescription icon={<FaDumbbell size={30}/>} size="50" title="Gimnasio"/>
         </Col>
       </Row>
-    </Container>
+
 
           <Row className="d-flex align-items-center justify-content-center">
         <div className="text-center mb-4">
@@ -126,7 +123,9 @@ const Home = () => {
         </Col>
         <Col md={5} className="mb-4">
           <Image src={boda} fluid rounded />
+        </Col>
       </Row>
+      </Container>
   );
 };
 
