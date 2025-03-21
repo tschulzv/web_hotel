@@ -5,7 +5,8 @@ import IconDescription from '../components/IconDescription';
 import { FaSwimmingPool, FaWifi, FaDumbbell } from "react-icons/fa";
 import { MdLocalLaundryService, MdOutlineRestaurant, MdRoomService } from "react-icons/md";
 import hotel from '../img/hotel.jpg';
-
+import restaurante from '../img/restaurante.jpg';
+import boda from '../img/boda.jpg';
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -46,36 +47,6 @@ const Home = () => {
         </Col>
       </Row>
 
-
-      {/* Sección de Servicios */}
-      <Row className="d-flex align-items-center justify-content-center">
-        <div className="text-center mb-4">
-          <h2>Nuestros Servicios</h2>
-        </div>
-        <Col md={5} className="mb-4">
-          <Image src={restaurante} fluid rounded />
-        </Col>
-        <Col md={7} className="text-md-start">
-          <h3>Restaurante</h3>
-          <p>
-            El restaurante del hotel ofrece una experiencia gastronómica de alto nivel, 
-            enmarcada en un ambiente elegante y refinado. Su propuesta culinaria fusiona 
-            la tradición local con innovadoras técnicas contemporáneas. 
-            <a href="#"> Más información</a>
-          </p>
-        </Col>
-      </Row>
-      <Row className="d-flex align-items-center justify-content-center">
-        <Col md={7} className="text-md-end">
-          <h3>Eventos</h3>
-          <p>
-            Los eventos organizados en el restaurante se caracterizan por una planificación 
-            meticulosa y una atención personalizada. Cada celebración, desde reuniones 
-            empresariales hasta banquetes privados, se desarrolla en un entorno versátil y sofisticado.
-          </p>
-        </Col>
-        <Col md={5} className="mb-4">
-          <Image src={boda} fluid rounded />
       <Row className="py-5 d-flex align-items-center justify-content-center w-100">
         <div className="text-center mb-4">
           <h2>Nuestros Servicios</h2>
@@ -93,12 +64,9 @@ const Home = () => {
           <IconDescription icon={<FaDumbbell size={30}/>} size="50" title="Gimnasio"/>
         </Col>
       </Row>
+      <hr></hr>
 
-
-          <Row className="d-flex align-items-center justify-content-center">
-        <div className="text-center mb-4">
-          <h2>Nuestros Servicios</h2>
-        </div>
+      <Row className="d-flex align-items-center justify-content-center">
         <Col md={5} className="mb-4">
           <Image src={restaurante} fluid rounded />
         </Col>
