@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import DatePicker from '../components/DatePicker';
+import IconDescription from '../components/IconDescription';
+import { FaSwimmingPool, FaWifi, FaDumbbell } from "react-icons/fa";
+import { MdLocalLaundryService, MdOutlineRestaurant, MdRoomService } from "react-icons/md";
 import hotel from '../img/hotel.jpg';
 
 const Home = () => {
@@ -45,12 +48,21 @@ const Home = () => {
 
       {/* Sección de Servicios */}
       <Row className="py-5 d-flex align-items-center justify-content-center w-100">
-        <div className="text-center">
+        <div className="text-center mb-4">
           <h2>Nuestros Servicios</h2>
         </div>
-        <p className="text-center">
-          Además de nuestras cómodas habitaciones, contamos con gimnasio, spa, restaurante y eventos especiales para que tu estadía sea memorable.
-        </p>
+        <Col>
+          <IconDescription icon={<FaSwimmingPool size={30}/>} size="50" title="Piscina al aire libre" className="py-3"/>
+          <IconDescription icon={<MdLocalLaundryService size={30}/>} size="50" title="Servicio de Lavandería"/>
+        </Col>
+        <Col>
+          <IconDescription icon={<MdOutlineRestaurant size={30}/>} size="50" title="Restaurante" />
+          <IconDescription icon={<MdRoomService size={30}/>} size="50" title="Servicio a la Habitación" />
+        </Col>
+        <Col>
+          <IconDescription icon={<FaWifi size={30}/>} size="50" title="Wi-Fi" />
+          <IconDescription icon={<FaDumbbell size={30}/>} size="50" title="Gimnasio"/>
+        </Col>
       </Row>
     </Container>
   );

@@ -12,3 +12,7 @@
 .bg-light-gray {
   background-color: gainsboro;
 }
+
+.rounded-corners {
+  border-radius: 4px;
+}
