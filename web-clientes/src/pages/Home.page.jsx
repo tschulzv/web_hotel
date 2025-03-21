@@ -81,7 +81,7 @@ const Home = () => {
         </Col>
       </Row>
       <Row className="d-flex align-items-center justify-content-center">
-        <Col md={7} className="text-md-end">
+        <Col md={7} className="">
           <h3>Eventos</h3>
           <p>
             Los eventos organizados en el restaurante se caracterizan por una planificación 
