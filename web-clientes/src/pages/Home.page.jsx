@@ -17,11 +17,11 @@ const Home = () => {
   return (
     <Container className="py-5" style={{ maxWidth: "1200px" }}>
       <Row className="mb-5"> {/* Espacio entre secciones */}
-        <Col md={4} className="d-flex flex-column align-items-center justify-content-center">
-          <h1>Tu escape exclusivo</h1>
+        <Col md={5} className="d-flex flex-column align-items-start justify-content-center">
+          <h1 className="main-title">Tu escape exclusivo</h1>
           <h5>Donde cada estancia se convierte en una experiencia inolvidable.</h5>
         </Col>
-        <Col md={8}>
+        <Col md={7}>
           <Image src={hotel} rounded fluid />
         </Col>
       </Row>
@@ -29,7 +29,7 @@ const Home = () => {
       {/* Sección de Reserva */}
       <Row className="bg-light-gray py-5 d-flex align-items-center justify-content-center w-100 mb-5">
         <div className="text-center mb-4">
-          <h2>Haz tu reserva</h2>
+          <h2 className='subtitle'>Haz tu reserva</h2>
         </div>
         <Col md={6} className="d-flex justify-content-center">
           <DatePicker
@@ -72,18 +72,18 @@ const Home = () => {
         </Col>
         <Col md={7} className="text-md-start">
           <h3>Restaurante</h3>
-          <p>
+          <p className="justify">
             El restaurante del hotel ofrece una experiencia gastronómica de alto nivel, 
             enmarcada en un ambiente elegante y refinado. Su propuesta culinaria fusiona 
-            la tradición local con innovadoras técnicas contemporáneas. 
-            <a href="#"> Más información</a>
+            la tradición local con innovadoras técnicas contemporáneas.
+            <a href="/restaurante" className='link px-1'>Más información...</a>
           </p>
         </Col>
       </Row>
       <Row className="d-flex align-items-center justify-content-center">
         <Col md={7} className="">
           <h3>Eventos</h3>
-          <p>
+          <p className="justify">
             Los eventos organizados en el restaurante se caracterizan por una planificación 
             meticulosa y una atención personalizada. Cada celebración, desde reuniones 
             empresariales hasta banquetes privados, se desarrolla en un entorno versátil y sofisticado.
@@ -150,7 +150,7 @@ const Home = () => {
             <textarea type="tel" class="form-control" id="contactMsg" rows="4" placeholder="Escribe tu consulta aquí..." required/>
           </div>
           
-          <button type="submit" class="btn btn-secondary">Enviar</button>
+          <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
         </Col>
       </Row>
@@ -170,7 +170,7 @@ const Home = () => {
         </Col>
         <Col md={6}>
           <h2>Nuestra ubicación</h2>
-          <p style={{ textAlign: "justify" }}>Nuestro hotel se encuentra en la costanera de Encarnación, en una ubicación privilegiada frente al río Paraná. Disfruta de vistas espectaculares, acceso directo a las playas y la cercanía a los principales atractivos turísticos, restaurantes y centros comerciales de la ciudad. Un lugar ideal para relajarse y explorar lo mejor de Encarnación.</p>
+          <p className="justify">Nuestro hotel se encuentra en la costanera de Encarnación, en una ubicación privilegiada frente al río Paraná. Disfruta de vistas espectaculares, acceso directo a las playas y la cercanía a los principales atractivos turísticos, restaurantes y centros comerciales de la ciudad. Un lugar ideal para relajarse y explorar lo mejor de Encarnación.</p>
         </Col>
       </Row>
 

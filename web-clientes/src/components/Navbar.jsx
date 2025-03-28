@@ -22,9 +22,9 @@ const Navigation = () => {
         <Nav className="ms-auto">
           <Nav.Link href="/">Inicio</Nav.Link>
           <NavDropdown title="Habitaciones" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Estandar</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Deluxe</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Presidencial</NavDropdown.Item>
+            <NavDropdown.Item href="/habitaciones/estandar">Estandar</NavDropdown.Item>
+            <NavDropdown.Item href="/habitaciones/deluxe">Deluxe</NavDropdown.Item>
+            <NavDropdown.Item href="/habitaciones/presidencial">Presidencial</NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="/restaurante">Restaurante</Nav.Link>
         </Nav>
