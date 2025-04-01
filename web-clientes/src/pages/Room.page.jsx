@@ -19,37 +19,38 @@ const Room = () => {
   };
 
   return (
-  <Container className="py-5" style={{ maxWidth: "1200px" }}>
+  <Container className="py-5" fluid>
     <Row className="mb-5">
         <h1 className="main-title">{room.nombre}</h1>
     </Row>
-    <Row>
+    <Row className="mb-4">
         <CarouselWithThumbnails />
     </Row>
 
-    
       {/* Sección de Reserva */}
-      <Row className="bg-light-gray py-5 d-flex align-items-center justify-content-center w-100 mb-5">
-        <div className="text-center mb-4">
-          <h2 className='subtitle'>Haz tu reserva</h2>
-        </div>
-        <Col md={6} className="d-flex justify-content-center">
-          <DatePicker
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-            placeholderText="Selecciona una fecha"
-          />
-        </Col>
-        <Col md={6} className="d-flex flex-column align-items-center">
-          <input name="adults" type="number" id="adults" placeholder="Adultos" className="mb-3 w-75" />
-          <input name="children" type="number" id="children" placeholder="Niños" className="mb-3 w-75" />
-          <button type="submit" className="btn btn-primary w-25" onClick={searchTariffs}>
-            Buscar tarifas
-          </button>
-        </Col>
-      </Row>
+    <Row className="bg-light-gray py-4 d-flex align-items-center justify-content-center w-100 mb-5">
+      <div className="text-center mb-4">
+        <h2 className='subtitle'>Haz tu reserva</h2>
+      </div>
+      <Col md={5} className="d-flex flex-column align-items-center justify-content-center px-4">
+        <label for="check-in">Check-In</label>
+        <input name="check-in" type="date" id="check-in" className="mb-3 w-75 form-control" />
+        <label for="check-out">Check-Out</label>
+        <input name="check-out" type="date" id="check-out" className="mb-3 w-75 form-control" />
+      </Col>
+      <Col md={5} className="d-flex flex-column align-items-center justify-content-center px-4">
+        <label for="adults">Adultos</label>
+        <input name="adults" type="number" id="adults" className="mb-3 w-75 form-control"  min="0"/>
+        <label for="children">Niños</label>
+        <input name="children" type="number" id="children" className="mb-3 w-75 form-control" min="0"/>
+      </Col>
+      <Col md={2}>
+        <button type="submit" className="btn btn-primary fw-bolder" onClick={searchTariffs}>
+          Buscar tarifas
+        </button>
+      </Col>
+    </Row>
 
-   
     {/* Seccion Descripcion */ }
     <Row className='py-5'>
         <div className="text-center mb-4">

@@ -15,7 +15,7 @@ const Home = () => {
   };
 
   return (
-    <Container className="py-5" style={{ maxWidth: "1200px" }}>
+    <Container className="py-5" fluid>
       <Row className="mb-5"> {/* Espacio entre secciones */}
         <Col md={5} className="d-flex flex-column align-items-start justify-content-center">
           <h1 className="main-title">Tu escape exclusivo</h1>
@@ -27,21 +27,24 @@ const Home = () => {
       </Row>
 
       {/* Sección de Reserva */}
-      <Row className="bg-light-gray py-5 d-flex align-items-center justify-content-center w-100 mb-5">
+      <Row className="bg-light-gray py-4 d-flex align-items-center justify-content-center w-100 mb-5">
         <div className="text-center mb-4">
           <h2 className='subtitle'>Haz tu reserva</h2>
         </div>
-        <Col md={6} className="d-flex justify-content-center">
-          <DatePicker
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-            placeholderText="Selecciona una fecha"
-          />
+        <Col md={5} className="d-flex flex-column align-items-center justify-content-center px-4">
+          <label for="check-in">Check-In</label>
+          <input name="check-in" type="date" id="check-in" className="mb-3 w-75 form-control" />
+          <label for="check-out">Check-Out</label>
+          <input name="check-out" type="date" id="check-out" className="mb-3 w-75 form-control" />
         </Col>
-        <Col md={6} className="d-flex flex-column align-items-center">
-          <input name="adults" type="number" id="adults" placeholder="Adultos" className="mb-3 w-75" />
-          <input name="children" type="number" id="children" placeholder="Niños" className="mb-3 w-75" />
-          <button type="submit" className="btn btn-primary w-25" onClick={searchTariffs}>
+        <Col md={5} className="d-flex flex-column align-items-center justify-content-center px-4">
+          <label for="adults">Adultos</label>
+          <input name="adults" type="number" id="adults" className="mb-3 w-75 form-control"  min="0"/>
+          <label for="children">Niños</label>
+          <input name="children" type="number" id="children" className="mb-3 w-75 form-control" min="0"/>
+        </Col>
+        <Col md={2}>
+          <button type="submit" className="btn btn-primary fw-bolder" onClick={searchTariffs}>
             Buscar tarifas
           </button>
         </Col>
@@ -133,24 +136,24 @@ const Home = () => {
         </div>
         <Col md={8} lg={6} className="mx-auto">
           <form >
-          <div class="mb-3">
-            <label for="contactName" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="contactName" required/>
+          <div className="mb-3">
+            <label for="contactName" className="form-label">Nombre</label>
+            <input type="text" className="form-control" id="contactName" required/>
           </div>
-          <div class="mb-3">
-            <label for="contactEmail" class="form-label">Correo electrónico</label>
-            <input type="email" class="form-control" id="contactEmail" required/>
+          <div className="mb-3">
+            <label for="contactEmail" className="form-label">Correo electrónico</label>
+            <input type="email" className="form-control" id="contactEmail" required/>
           </div>
-          <div class="mb-3">
-            <label for="contactPhone" class="form-label">Teléfono</label>
-            <input type="tel" class="form-control" id="contactPhone" required/>
+          <div className="mb-3">
+            <label for="contactPhone" className="form-label">Teléfono</label>
+            <input type="tel" className="form-control" id="contactPhone" required/>
           </div>
-          <div class="mb-3">
-            <label for="contactMsg" class="form-label">Mensaje</label>
-            <textarea type="tel" class="form-control" id="contactMsg" rows="4" placeholder="Escribe tu consulta aquí..." required/>
+          <div className="mb-3">
+            <label for="contactMsg" className="form-label">Mensaje</label>
+            <textarea type="tel" className="form-control" id="contactMsg" rows="4" placeholder="Escribe tu consulta aquí..." required/>
           </div>
           
-          <button type="submit" class="btn btn-primary">Enviar</button>
+          <button type="submit" className="btn btn-primary fw-bolder">Enviar</button>
         </form>
         </Col>
       </Row>

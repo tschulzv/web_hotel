@@ -18,7 +18,7 @@
 }
 
 .bg-light-gray {
-  background-color: gainsboro;
+  background-color: #e9ecef;
 }
 
 .rounded-corners {
@@ -53,4 +53,10 @@
 
 .justify {
   text-align: justify;
+}
+
+.btn-gray {
+  background-color: #495057;
+  color: white;
+  font-weight: bolder;
 }
