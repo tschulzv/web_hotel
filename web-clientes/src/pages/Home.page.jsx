@@ -52,11 +52,11 @@ const Home = () => {
 
       <Row className="py-5 d-flex align-items-center justify-content-center w-100">
         <div className="text-center mb-4">
-          <h2>Nuestros Servicios</h2>
+          <h2 className='subtitle'>Nuestros Servicios</h2>
         </div>
         <Col>
           <IconDescription icon={<FaSwimmingPool size={30}/>} size="50" title="Piscina al aire libre" className="py-3"/>
-          <IconDescription icon={<MdLocalLaundryService size={30}/>} size="50" title="Servicio de Lavandería"/>
+          <IconDescription icon={<MdLocalLaundryService size={30}/>} size="50" title=""/>
         </Col>
         <Col>
           <IconDescription icon={<MdOutlineRestaurant size={30}/>} size="50" title="Restaurante" />
@@ -100,12 +100,12 @@ const Home = () => {
     {/* Seccion Distinciones y Premios*/}
       <Row className="bg-light-gray py-5">
         <div className="text-center mb-4">
-          <h2>Distinciones y Premios</h2>
+          <h2 className='subtitle'>Distinciones y Premios</h2>
         </div>
         <Col>
         <div className='d-flex flex-column justify-content-start align-items-center text-center'>
           <div className='bg-white rounded-corners d-flex align-items-center justify-content-center' style={{ width: '90px', height: '90px' }}>
-            <FaAward size={70} />
+            <i className="bi bi-award" style={{"font-size": "4rem"}}></i>
           </div>
           <h5 className='mt-3'>TripAdvisor's Traveler's Choice</h5>
         </div>
@@ -113,7 +113,7 @@ const Home = () => {
         <Col>
         <div className='d-flex flex-column justify-content-start align-items-center text-center'>
           <div className='bg-white rounded-corners d-flex align-items-center justify-content-center' style={{ width: '90px', height: '90px'}}>
-            <FaAward size={70} />
+            <i className="bi bi-award" style={{"fontSize": "4rem"}}></i>
           </div>
           <h5 className='mt-3'>Certificación de Excelencia de Booking.com</h5>
         </div>
@@ -121,7 +121,7 @@ const Home = () => {
         <Col>
         <div className='d-flex flex-column justify-content-start align-items-center text-center'>
           <div className='bg-white rounded-corners d-flex align-items-center justify-content-center' style={{ width: '90px', height: '90px' }}>
-            <FaAward size={70} />
+            <i className="bi bi-award" style={{"font-size": "4rem"}}></i>
           </div>
           <h5 className='mt-3'>World Travel Awards</h5>
         </div>
@@ -131,7 +131,7 @@ const Home = () => {
       {/* Seccion Form Contacto*/ }
       <Row className='py-5'>
         <div className="text-center mb-4">
-          <h2>Contacto</h2>
+          <h2 className='subtitle'>Contacto</h2>
           <p>¿Tienes alguna consulta? Ponte en contacto con nosotros y te atenderemos lo antes posible.</p>
         </div>
         <Col md={8} lg={6} className="mx-auto">
@@ -172,7 +172,7 @@ const Home = () => {
         />
         </Col>
         <Col md={6}>
-          <h2>Nuestra ubicación</h2>
+          <h2 className='subtitle'>Nuestra ubicación</h2>
           <p className="justify">Nuestro hotel se encuentra en la costanera de Encarnación, en una ubicación privilegiada frente al río Paraná. Disfruta de vistas espectaculares, acceso directo a las playas y la cercanía a los principales atractivos turísticos, restaurantes y centros comerciales de la ciudad. Un lugar ideal para relajarse y explorar lo mejor de Encarnación.</p>
         </Col>
       </Row>

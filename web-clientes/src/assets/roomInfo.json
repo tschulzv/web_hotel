@@ -1,18 +1,88 @@
 {
     "estandar": {
-        "nombre": "Estándar",
-        "descripcion": "aaa",
-        "servicios": ["Aire acondicionado", ""]
-    },
-    "presidencial" : {
-        "nombre": "Suite Presidencial",
-        "descripcion": "La Suite Presidencial es la estancia más exclusiva del hotel, diseñada para ofrecer el máximo lujo, confort y privacidad. Cuenta con amplios espacios elegantemente decorados, incluyendo una sala de estar, comedor, oficina, dormitorio principal con cama king-size y baño de mármol con jacuzzi. Además, ofrece vistas panorámicas, servicio de mayordomo, tecnología de última generación y acceso a áreas VIP, garantizando una experiencia inigualable para huéspedes distinguidos.",
-        "servicios": ["Jacuzzi", "Televisión", "Cama Extra Grande", "Vista Panorámica", "Minibar Premium", "Sala de Estar y Escritorio"]
+        "nombre": "Habitación Estándar",
+        "descripcion": "La habitación estándar es ideal para aquellos que buscan comodidad y funcionalidad a un precio accesible. Con un diseño sencillo pero acogedor, esta habitación ofrece todo lo necesario para una estancia agradable, ya sea por trabajo o placer.",
+        "services": [{
+            "titulo": "Aire acondicionado",
+            "icono": "ac_unit"
+        },
+        {
+            "titulo": "Wi-Fi",
+            "icono": "wifi"
+        },
+        {
+            "titulo": "Televisión por cable",
+            "icono": "tv"
+        },
+        {
+            "titulo": "Baño privado",
+            "icono": "shower"
+        },
+        {
+            "titulo": "Caja Fuerte",
+            "icono": "lock"
+        },
+        {
+            "titulo": "Frigobar",
+            "icono": "kitchen"
+        }
+        ]
     },
     "deluxe" : {
         "nombre": "Suite Deluxe",
+        "descripcion": "La habitación deluxe es perfecta para quienes desean un nivel superior de confort y lujo. Con una decoración más refinada y detalles de alta gama, esta habitación ofrece un espacio más amplio y servicios adicionales que garantizan una experiencia más exclusiva.",
+        "services": [{
+            "titulo": "Aire acondicionado",
+            "icono": "ac_unit"
+        },
+        {
+            "titulo": "Wi-Fi",
+            "icono": "wifi"
+        },
+        {
+            "titulo": "Televisión con Canales Premium",
+            "icono": "tv"
+        },
+        {
+            "titulo": "Baño con hidromasaje",
+            "icono": "bathtub"
+        },
+        {
+            "titulo": "Caja Fuerte",
+            "icono": "lock"
+        },
+        {
+            "titulo": "Frigobar Premium",
+            "icono": "kitchen"
+        }
+        ]},
+    "presidencial" : {
+        "nombre": "Suite Presidencial",
         "descripcion": "La Suite Presidencial es la estancia más exclusiva del hotel, diseñada para ofrecer el máximo lujo, confort y privacidad. Cuenta con amplios espacios elegantemente decorados, incluyendo una sala de estar, comedor, oficina, dormitorio principal con cama king-size y baño de mármol con jacuzzi. Además, ofrece vistas panorámicas, servicio de mayordomo, tecnología de última generación y acceso a áreas VIP, garantizando una experiencia inigualable para huéspedes distinguidos.",
-        "servicios": ["Jacuzzi", "Televisión", "Cama Extra Grande", "Vista Panorámica", "Minibar Premium", "Sala de Estar y Escritorio"]
-    }
+        "services": [{
+            "titulo": "Aire acondicionado",
+            "icono": "ac_unit"
+        },
+        {
+            "titulo": "Wi-Fi",
+            "icono": "wifi"
+        },
+        {
+            "titulo": "Sala de estar y Escritorio",
+            "icono": "chair"
+        },
+        {
+            "titulo": "Jacuzzi",
+            "icono": "hot_tub"
+        },
+        {
+            "titulo": "Vista panorámica",
+            "icono": "balcony"
+        },
+        {
+            "titulo": "Frigobar Premium",
+            "icono": "kitchen"
+        }
+        ]}
     
 }

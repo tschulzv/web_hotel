@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import   { useParams } from "react-router-dom";
 import roomInfo from '../assets/roomInfo.json';
-import DatePicker from '../components/DatePicker';
 import CarouselWithThumbnails from '../components/CarouselWithThumbnails';
-import IconDescription from '../components/IconDescription';
-import { FaSwimmingPool, FaWifi, FaDumbbell, FaAward } from "react-icons/fa";
-import { MdLocalLaundryService, MdOutlineRestaurant, MdRoomService } from "react-icons/md";
+import GoogleIconFrame from '../components/GoogleIconFrame';
+
 
 // más adelante, cambiar a q obtenga los datos de la db
 const Room = () => {
   let { tipo } = useParams();
   const room = roomInfo[tipo];
+  const services = room.services;
   const [selectedDate, setSelectedDate] = useState(null);
 
   const searchTariffs = (e) => {
@@ -64,19 +63,19 @@ const Room = () => {
     <hr/>
     <Row className="py-5 d-flex align-items-center justify-content-center w-100">
         <div className="text-center mb-4">
-          <h2 className='subtitle'>Nuestros Servicios</h2>
+          <h2 className='subtitle'>Características</h2>
         </div>
         <Col>
-          <IconDescription icon={<FaSwimmingPool size={30}/>} size="50" title="Piscina al aire libre" className="py-3"/>
-          <IconDescription icon={<MdLocalLaundryService size={30}/>} size="50" title="Servicio de Lavandería"/>
+          <GoogleIconFrame icon={services[0].icono} iconSize="2rem" frameSize="50" title={services[0].titulo} className="py-3"></GoogleIconFrame>
+          <GoogleIconFrame icon={services[1].icono} iconSize="2rem" frameSize="50" title={services[1].titulo} className="py-3"></GoogleIconFrame>
         </Col>
         <Col>
-          <IconDescription icon={<MdOutlineRestaurant size={30}/>} size="50" title="Restaurante" />
-          <IconDescription icon={<MdRoomService size={30}/>} size="50" title="Servicio a la Habitación" />
+          <GoogleIconFrame icon={services[2].icono} iconSize="2rem" frameSize="50" title={services[2].titulo} className="py-3"></GoogleIconFrame>
+          <GoogleIconFrame icon={services[3].icono} iconSize="2rem" frameSize="50" title={services[3].titulo} className="py-3"></GoogleIconFrame>
         </Col>
         <Col>
-          <IconDescription icon={<FaWifi size={30}/>} size="50" title="Wi-Fi" />
-          <IconDescription icon={<FaDumbbell size={30}/>} size="50" title="Gimnasio"/>
+          <GoogleIconFrame icon={services[4].icono} iconSize="2rem" frameSize="50" title={services[4].titulo} className="py-3"></GoogleIconFrame>
+          <GoogleIconFrame icon={services[5].icono} iconSize="2rem" frameSize="50" title={services[5].titulo} className="py-3"></GoogleIconFrame>
         </Col>
       </Row>
 
