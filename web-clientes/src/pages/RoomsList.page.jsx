@@ -117,7 +117,6 @@ const RoomsList = () => {
                             <div className="text-muted small">Check-In</div>
                         </div>
 
-                        {/* Flecha o guion */}
                         <div className="fs-4">→</div>
 
                         {/* Check-Out */}
