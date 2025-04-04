@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import DatePicker from '../components/DatePicker';
 import IconDescription from '../components/IconDescription';
@@ -8,10 +9,18 @@ import hotel from '../img/hotel.jpg';
 import restaurante from '../img/restaurante.jpg';
 import boda from '../img/boda.jpg';
 const Home = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState({ checkIn: '', checkOut: '', adults: 0, children: 0 });
+  const navigate = useNavigate();
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setSelectedDate((prev) => ({ ...prev, [name]: value }));
+  };
 
   const searchTariffs = (e) => {
     e.preventDefault();
+    const { checkIn, checkOut, adults, children } = selectedDate;
+    navigate(`/habitaciones?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&children=${children}`);
   };
 
   return (
@@ -32,16 +41,42 @@ const Home = () => {
           <h2 className='subtitle'>Haz tu reserva</h2>
         </div>
         <Col md={5} className="d-flex flex-column align-items-center justify-content-center px-4">
-          <label for="check-in">Check-In</label>
-          <input name="check-in" type="date" id="check-in" className="mb-3 w-75 form-control" />
-          <label for="check-out">Check-Out</label>
-          <input name="check-out" type="date" id="check-out" className="mb-3 w-75 form-control" />
+          <label htmlFor="check-in">Check-In</label>
+          <input
+            name="checkIn"
+            type="date"
+            id="check-in"
+            className="mb-3 w-75 form-control"
+            onChange={handleInputChange}
+          />
+          <label htmlFor="check-out">Check-Out</label>
+          <input
+            name="checkOut"
+            type="date"
+            id="check-out"
+            className="mb-3 w-75 form-control"
+            onChange={handleInputChange}
+          />
         </Col>
         <Col md={5} className="d-flex flex-column align-items-center justify-content-center px-4">
-          <label for="adults">Adultos</label>
-          <input name="adults" type="number" id="adults" className="mb-3 w-75 form-control"  min="0"/>
-          <label for="children">Niños</label>
-          <input name="children" type="number" id="children" className="mb-3 w-75 form-control" min="0"/>
+          <label htmlFor="adults">Adultos</label>
+          <input
+            name="adults"
+            type="number"
+            id="adults"
+            className="mb-3 w-75 form-control"
+            min="0"
+            onChange={handleInputChange}
+          />
+          <label htmlFor="children">Niños</label>
+          <input
+            name="children"
+            type="number"
+            id="children"
+            className="mb-3 w-75 form-control"
+            min="0"
+            onChange={handleInputChange}
+          />
         </Col>
         <Col md={2}>
           <button type="submit" className="btn btn-primary fw-bolder" onClick={searchTariffs}>
