@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Button, Container, Row, Col, Badge } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import estandar from "../img/habitacion-estandar.png";
 import deluxe from "../img/habitacion-deluxe.png";
 import presidencial from "../img/suite-presidencial.png";
@@ -23,7 +24,40 @@ const serviceIcons = {
     "Música ambiental": <FaMusic />,
 };
 
+// Funciones de formato nms
+const toLocalDate = (dateStr) => {
+    if (dateStr instanceof Date) return dateStr;
+    const [year, month, day] = dateStr.split('-');
+    return new Date(year, month - 1, day);
+};
+
+  // Formato de día de la semana
+const formatDayOfWeek = (dateStr) => {
+    const date = toLocalDate(dateStr);
+    return date.toLocaleDateString('es-ES', { weekday: 'long' });
+  };
+  
+  const formatDayMonth = (dateStr) => {
+    const date = toLocalDate(dateStr);
+    return date.toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: 'long',
+    });
+  };
+//-----
+
+const selectTariff = (room) => {
+    // @otto cambia esto para que funcione tu reserva
+}
+  
 const RoomsList = () => {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const checkIn = queryParams.get("checkIn");
+    const checkOut = queryParams.get("checkOut");
+    const adults = queryParams.get("adults");
+    const children = queryParams.get("children");
+
     const rooms = [
         {
             id: 1,
@@ -62,36 +96,58 @@ const RoomsList = () => {
         },
     ];
 
+    const filteredRooms = rooms.filter((room) => {
+        // Add filtering logic based on checkIn, checkOut, adults, and children if needed
+        return true; // Placeholder: Adjust this logic as per requirements
+    });
+
     return (
         <Container className="mt-4">
             <Row className="mb-3 align-items-center">
-                <Col md={6}>
-                    <div className="d-flex align-items-center gap-3">
-                        {/* Nuevo diseño de fechas */}
-                        <div className="d-flex align-items-baseline gap-2">
-                            <div className="text-center">
-                                <div className="fw-bold fs-5">16</div>
-                                <div className="text-muted small">Abr</div>
+                <Col md={3} className="text-start">
+                    <div className="d-flex align-items-center gap-3 justify-content-between">
+                        {/* Check-In */}
+                        <div className="text-center">
+                            <div className="fw-bold fs-6">
+                                {checkIn ? formatDayOfWeek(checkIn) : '--'}
                             </div>
-                            <span className="mx-1">-</span>
-                            <div className="text-center">
-                                <div className="fw-bold fs-5">24</div>
-                                <div className="text-muted small">Abr</div>
+                            <div className="fs-5">
+                                {checkIn ? formatDayMonth(checkIn) : '--'}
                             </div>
+                            <div className="text-muted small">Check-In</div>
+                        </div>
+
+                        {/* Flecha o guion */}
+                        <div className="fs-4">→</div>
+
+                        {/* Check-Out */}
+                        <div className="text-center">
+                            <div className="fw-bold fs-6">
+                                {checkOut ? formatDayOfWeek(checkOut) : '--'}
+                            </div>
+                            <div className="fs-5">
+                                {checkOut ? formatDayMonth(checkOut) : '--'}
+                            </div>
+                            <div className="text-muted small">Check-Out</div>
                         </div>
                     </div>
                 </Col>
-                <Col md={6} className="text-end">
+
+                <Col md={2} className="text-end">
                     <div className="d-flex align-items-center gap-2 justify-content-end">
-                        <span className="fw-medium">1 habitación</span>
-                        <div className="vr"></div>
-                        <span className="fw-medium">Av. 1 adulto</span>
+                        <span className="fw-medium">{adults} adulto(s)</span>
+                        {children > 0 && (
+                            <>
+                                <div className="vr"></div>
+                                <span className="fw-medium">{children} niño(s)</span>
+                            </>
+                        )}
                     </div>
                 </Col>
             </Row>
             <hr></hr>
             <h1 className="text-center mb-4">Habitaciones Disponibles</h1>
-            {rooms.map((room) => (
+            {filteredRooms.map((room) => (
                 <Row key={room.id} className="mb-4">
                     <Col md={12}>
                         <Card
@@ -147,7 +203,7 @@ const RoomsList = () => {
                                         <Card.Text className="fw-bold fs-5">
                                             Gs. {room.price.toLocaleString()}
                                         </Card.Text>
-                                        <Button variant="success" className="w-100">
+                                        <Button variant="success" className="w-100" onClick={selectTariff}>
                                             Seleccionar Tarifa
                                         </Button>
                                     </Card.Body>
