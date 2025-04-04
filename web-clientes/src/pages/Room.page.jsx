@@ -1,21 +1,55 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import   { useParams } from "react-router-dom";
 import roomInfo from '../assets/roomInfo.json';
+import BookingForm from '../components/BookingForm';
 import CarouselWithThumbnails from '../components/CarouselWithThumbnails';
 import GoogleIconFrame from '../components/GoogleIconFrame';
 
 
 // más adelante, cambiar a q obtenga los datos de la db
 const Room = () => {
-  let { tipo } = useParams();
-  const room = roomInfo[tipo];
+  let { type } = useParams();
+  const room = roomInfo[type];
   const services = room.services;
-  const [selectedDate, setSelectedDate] = useState(null);
+
+  const [selectedDate, setSelectedDate] = useState({ checkIn: '', checkOut: '', adults: 0, children: 0 });
+  const [rooms, setRooms] = useState([{ adults: 1, children: 0 }]);
+  const navigate = useNavigate();
+  const [showRoomSelector, setShowRoomSelector] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setSelectedDate((prev) => ({ ...prev, [name]: value }));
+  };
 
   const searchTariffs = (e) => {
     e.preventDefault();
+    const { checkIn, checkOut, adults, children } = selectedDate;
+    navigate(`/habitaciones?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&children=${children}&type=${type}`);
   };
+
+  const toggleRoomSelector = () => {
+    setShowRoomSelector(!showRoomSelector);
+  };
+
+  const handleRoomChange = (index, type, value) => {
+    const newRooms = [...rooms];
+    newRooms[index][type] = value;
+    setRooms(newRooms);
+  };
+
+  const addRoom = () => {
+    setRooms([...rooms, { adults: 1, children: 0 }]);
+  };
+
+  const removeRoom = (index) => {
+    if (rooms.length > 1) {
+      setRooms(rooms.filter((_, i) => i !== index));
+    }
+  };
+
 
   return (
   <Container className="py-5" fluid>
@@ -27,28 +61,7 @@ const Room = () => {
     </Row>
 
       {/* Sección de Reserva */}
-    <Row className="bg-light-gray py-4 d-flex align-items-center justify-content-center w-100 mb-5">
-      <div className="text-center mb-4">
-        <h2 className='subtitle'>Haz tu reserva</h2>
-      </div>
-      <Col md={5} className="d-flex flex-column align-items-center justify-content-center px-4">
-        <label for="check-in">Check-In</label>
-        <input name="check-in" type="date" id="check-in" className="mb-3 w-75 form-control" />
-        <label for="check-out">Check-Out</label>
-        <input name="check-out" type="date" id="check-out" className="mb-3 w-75 form-control" />
-      </Col>
-      <Col md={5} className="d-flex flex-column align-items-center justify-content-center px-4">
-        <label for="adults">Adultos</label>
-        <input name="adults" type="number" id="adults" className="mb-3 w-75 form-control"  min="0"/>
-        <label for="children">Niños</label>
-        <input name="children" type="number" id="children" className="mb-3 w-75 form-control" min="0"/>
-      </Col>
-      <Col md={2}>
-        <button type="submit" className="btn btn-primary fw-bolder" onClick={searchTariffs}>
-          Buscar tarifas
-        </button>
-      </Col>
-    </Row>
+    <BookingForm handleInputChange={handleInputChange} rooms={rooms} showRoomSelector={showRoomSelector} toggleRoomSelector={toggleRoomSelector} handleRoomChange={handleRoomChange} addRoom={addRoom} removeRoom={removeRoom} searchTariffs={searchTariffs}/>
 
     {/* Seccion Descripcion */ }
     <Row className='py-5'>
