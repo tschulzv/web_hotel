@@ -115,7 +115,7 @@ const Home = () => {
         <Col>
           <div className='d-flex flex-column justify-content-start align-items-center text-center'>
             <div className='bg-white rounded-corners d-flex align-items-center justify-content-center' style={{ width: '90px', height: '90px' }}>
-              <i className="bi bi-award" style={{ "font-size": "4rem" }}></i>
+              <span className="material-icons" style={{ fontSize: "4rem" }}>emoji_events</span>
             </div>
             <h5 className='mt-3'>TripAdvisor's Traveler's Choice</h5>
           </div>
@@ -123,7 +123,7 @@ const Home = () => {
         <Col>
           <div className='d-flex flex-column justify-content-start align-items-center text-center'>
             <div className='bg-white rounded-corners d-flex align-items-center justify-content-center' style={{ width: '90px', height: '90px' }}>
-              <i className="bi bi-award" style={{ "fontSize": "4rem" }}></i>
+              <span className="material-icons" style={{ fontSize: "4rem" }}>emoji_events</span>
             </div>
             <h5 className='mt-3'>Certificación de Excelencia de Booking.com</h5>
           </div>
@@ -131,7 +131,7 @@ const Home = () => {
         <Col>
           <div className='d-flex flex-column justify-content-start align-items-center text-center'>
             <div className='bg-white rounded-corners d-flex align-items-center justify-content-center' style={{ width: '90px', height: '90px' }}>
-              <i className="bi bi-award" style={{ "font-size": "4rem" }}></i>
+              <span className="material-icons" style={{ fontSize: "4rem" }}>emoji_events</span>
             </div>
             <h5 className='mt-3'>World Travel Awards</h5>
           </div>
