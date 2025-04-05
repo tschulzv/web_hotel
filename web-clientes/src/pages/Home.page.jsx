@@ -23,7 +23,8 @@ const Home = () => {
   const searchTariffs = (e) => {
     e.preventDefault();
     const { checkIn, checkOut, adults, children } = selectedDate;
-    navigate(`/habitaciones?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&children=${children}`);
+    const roomsQuery = encodeURIComponent(JSON.stringify(rooms));
+    navigate(`/habitaciones?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&children=${children}&rooms=${roomsQuery}`);
   };
 
   const toggleRoomSelector = () => {

@@ -16,7 +16,7 @@ const Navigation = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="bg-body-primary">
     <Container>
-      <Navbar.Brand href="#home"><img src={logo_hotel} height="60"></img></Navbar.Brand>
+      <Navbar.Brand href="/"><img src={logo_hotel} height="60"></img></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ms-auto">
