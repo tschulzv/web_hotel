@@ -4,6 +4,7 @@ import Home from "./pages/Home.page"
 import RestaurantPage from "./pages/Restaurant.page";
 import Room from "./pages/Room.page";
 import RoomsList from "./pages/RoomsList.page";
+import ReserveRoom from "./pages/ReserveRoom.page";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/restaurante" element={<RestaurantPage/>} />
           <Route path="/habitaciones" element={<RoomsList/>} />
           <Route path="/habitaciones/:tipo" element={<Room/>} />
+          <Route path="/habitaciones/reserva" element={<ReserveRoom/>} />
         </Routes>
       </Layout>
     </Router>

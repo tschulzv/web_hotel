@@ -60,3 +60,11 @@
   color: white;
   font-weight: bolder;
 }
+/*Agregue para mi letra. -Otto*/
+.custom-font-size-smaller {
+  font-size: 0.75rem; /* Example: Adjust to your desired smaller size */
+}
+
+.custom-font-color-font {
+  font-size: 0.85rem; /* Example: Adjust to your desired smaller size */
+}
