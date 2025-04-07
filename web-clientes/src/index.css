@@ -60,3 +60,25 @@
   color: white;
   font-weight: bolder;
 }
+
+
+.cancel-textarea {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+  resize: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.cancel-textarea::placeholder {
+  color: #888;
+}
+
+.cancel-textarea:focus {
+  border-color: #6c757d;
+  outline: none;
+}

@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Card } from 'react-bootstrap';
-import '../App.css';
+import '../index.css';
 
 const Cancellation = () => {
     const [reason, setReason] = useState('');// Estado para almacenar el motivo de cancelación
