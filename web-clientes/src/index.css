@@ -82,11 +82,13 @@
   border-color: #6c757d;
   outline: none;
 }
+
 /*Agregue para mi letra. -Otto*/
 .custom-font-size-smaller {
-  font-size: 0.75rem; /* Example: Adjust to your desired smaller size */
+  font-size: 0.75rem;
 }
 
 .custom-font-color-font {
-  font-size: 0.85rem; /* Example: Adjust to your desired smaller size */
+  font-size: 0.85rem;
+  color: gray;
 }

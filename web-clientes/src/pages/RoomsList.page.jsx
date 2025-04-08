@@ -105,7 +105,7 @@ const RoomsList = () => {
 
 
     const handleConfirm = () => {
-        navigate("/confirmarReserva");
+        navigate("/habitaciones/reserva");
     };
 
     return (
