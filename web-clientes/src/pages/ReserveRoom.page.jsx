@@ -26,7 +26,17 @@ const ReserveRoom = () => {
                         </Col>
                         <Col xs={12} sm={6} md={6}>
                             <label htmlFor="tipo_documento">Tipo de Documento</label>
-                            <input name="tipo_documento" type="text" id="tipo_documento" className="mb-3 w-75 form-control" />
+                            <Dropdown>
+                                <Dropdown.Toggle variant="outline-secondary" id="dropdown-options">
+                                    Seleccionar
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item className="custom-font-size-smaller" href="#/option-1">Cédula de Identidad Paraguaya</Dropdown.Item>
+                                    <Dropdown.Item className="custom-font-size-smaller" href="#/option-2">Pasaporte</Dropdown.Item>
+                                    <Dropdown.Item className="custom-font-size-smaller" href="#/option-3">Cedula de Identidad Extrangera</Dropdown.Item>
+                                    <Dropdown.Item className="custom-font-size-smaller" href="#/option-4">Otros</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </Col>
                     </Row>
                     <Row className="mb-4" g={2}>
@@ -42,7 +52,17 @@ const ReserveRoom = () => {
                     <Row className="mb-4">
                         <Col xs={12} sm={6} md={6}>
                             <label htmlFor="pais">País</label>
-                            <input name="pais" type="text" id="pais" className="mb-3 w-75 form-control" />
+                            <Dropdown>
+                                <Dropdown.Toggle variant="outline-secondary" id="dropdown-options">
+                                    Seleccionar
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item className="custom-font-size-smaller" href="#/option-1">Paraguay</Dropdown.Item>
+                                    <Dropdown.Item className="custom-font-size-smaller" href="#/option-2">Argentina</Dropdown.Item>
+                                    <Dropdown.Item className="custom-font-size-smaller" href="#/option-3">Brasil</Dropdown.Item>
+                                    <Dropdown.Item className="custom-font-size-smaller" href="#/option-4">Uruguay</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </Col>
                     </Row>
 
@@ -58,14 +78,12 @@ const ReserveRoom = () => {
                                 Seleccionar
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item className="custom-font-size-smaller" href="#/option-1">Option 1</Dropdown.Item>
-                                <Dropdown.Item className="custom-font-size-smaller" href="#/option-2">Option 2</Dropdown.Item>
-                                <Dropdown.Item className="custom-font-size-smaller" href="#/option-3">Option 3</Dropdown.Item>
+                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-1" >14:00 hs</Dropdown.Item>
+                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-2">15:00 hs</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                         <label htmlFor="comentarios">Comentarios</label>
                         <textarea name="comentarios" id="comentarios" class="mb-3 w-75 form-control" rows="4"></textarea>
-
                     </Row>
 
                     <button className="btn btn-primary fw-bolder">Solicitar Reserva</button>
@@ -94,9 +112,10 @@ const ReserveRoom = () => {
                                         Tipo de pensión
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-1">Option 1</Dropdown.Item>
-                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-2">Option 2</Dropdown.Item>
-                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-3">Option 3</Dropdown.Item>
+                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-1">Pension Completa</Dropdown.Item>
+                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-2">Media Pension</Dropdown.Item>
+                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-3">Alojamiento y Desayuno</Dropdown.Item>
+                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-3">Solo Alojamiento</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </Col>
@@ -114,9 +133,9 @@ const ReserveRoom = () => {
                                         Tipo de pensión
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-1" >Option 1</Dropdown.Item>
-                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-2">Option 2</Dropdown.Item>
-                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-3">Option 3</Dropdown.Item>
+                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-1">Pensión Completa</Dropdown.Item>
+                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-2">Media Pensión</Dropdown.Item>
+                                        <Dropdown.Item className="custom-font-size-smaller" href="#/option-3">Alojamiento y Desayuno</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </Col>
@@ -161,8 +180,6 @@ const ReserveRoom = () => {
                                 </Col>
                             </Row>
                         </Row>
-                        {/*Aqui iria los siguientes datos de la habitacion: tipo, fecha de entrada-salida, 
-                        cantidad de personas|cantidad de noches -- tipo de pension -- costo habitacion,  */}
                     </Row>
                 </Col>
             </Row >
