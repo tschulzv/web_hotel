@@ -61,6 +61,7 @@
   font-weight: bolder;
 }
 
+
 .cancel-textarea {
   width: 100%;
   padding: 10px 16px;
@@ -81,12 +82,11 @@
   border-color: #6c757d;
   outline: none;
 }
-
 /*Agregue para mi letra. -Otto*/
 .custom-font-size-smaller {
-  font-size: 0.75rem;
+  font-size: 0.75rem; /* Example: Adjust to your desired smaller size */
 }
 
 .custom-font-color-font {
-  font-size: 0.85rem;
+  font-size: 0.85rem; /* Example: Adjust to your desired smaller size */
 }
