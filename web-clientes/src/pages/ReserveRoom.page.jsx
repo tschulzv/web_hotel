@@ -5,7 +5,6 @@ import '../index.css';
 const ReserveRoom = () => {
     return (
         <Container className="py-5" fluid>
-            <h1 className="main-title">Reserva de Habitaciones</h1>
             <Row className="mb-5">
                 <Col xs={12} sm={6} md={8}>
                     {/* Informacion del huesped */}
