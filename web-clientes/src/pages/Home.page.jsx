@@ -9,11 +9,36 @@ import { MdLocalLaundryService, MdOutlineRestaurant, MdRoomService } from "react
 import hotel from '../img/hotel.jpg';
 import restaurante from '../img/restaurante.jpg';
 import boda from '../img/boda.jpg';
+import axios from '../config/axiosConfig'
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState({ checkIn: '', checkOut: '', adults: 0, children: 0 });
   const [rooms, setRooms] = useState([{ adults: 1, children: 0 }]);
   const navigate = useNavigate();
   const [showRoomSelector, setShowRoomSelector] = useState(false);
+  const [msgForm, setMsgForm] = useState({ nombre: '', email: '', telefono: '', mensaje: '' });
+
+
+  const sendMsg = async (e) => {
+    e.preventDefault();
+     try {
+      const response = await axios.post(`/Consultas/public`, {
+        nombre: msgForm.nombre,
+        email: msgForm.email,
+        telefono: msgForm.telefono,
+        mensaje: msgForm.mensaje
+      });
+      console.log(response);
+      setMsgForm({ nombre: '', email: '', telefono: '', mensaje: '' });
+
+    } catch (error) {
+      console.error('Error enviando datos:', error);
+    }
+  }
+
+  const handleMsgChange = (e) => {
+    const { name, value } = e.target;
+    setMsgForm((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -67,7 +92,7 @@ const Home = () => {
         </div>
         <Col>
           <IconDescription icon={<FaSwimmingPool size={30} />} size="50" title="Piscina al aire libre" className="py-3" />
-          <IconDescription icon={<MdLocalLaundryService size={30} />} size="50" title="" />
+          <IconDescription icon={<MdLocalLaundryService size={30} />} size="50" title="Servicio de Lavandería" />
         </Col>
         <Col>
           <IconDescription icon={<MdOutlineRestaurant size={30} />} size="50" title="Restaurante" />
@@ -141,33 +166,66 @@ const Home = () => {
 
       {/* Seccion Form Contacto*/}
       <Row className='py-5'>
-        <div className="text-center mb-4">
-          <h2 className='subtitle'>Contacto</h2>
-          <p>¿Tienes alguna consulta? Ponte en contacto con nosotros y te atenderemos lo antes posible.</p>
-        </div>
-        <Col md={8} lg={6} className="mx-auto">
-          <form >
-            <div className="mb-3">
-              <label for="contactName" className="form-label">Nombre</label>
-              <input type="text" className="form-control" id="contactName" required />
-            </div>
-            <div className="mb-3">
-              <label for="contactEmail" className="form-label">Correo electrónico</label>
-              <input type="email" className="form-control" id="contactEmail" required />
-            </div>
-            <div className="mb-3">
-              <label for="contactPhone" className="form-label">Teléfono</label>
-              <input type="tel" className="form-control" id="contactPhone" required />
-            </div>
-            <div className="mb-3">
-              <label for="contactMsg" className="form-label">Mensaje</label>
-              <textarea type="tel" className="form-control" id="contactMsg" rows="4" placeholder="Escribe tu consulta aquí..." required />
-            </div>
+      <div className="text-center mb-4">
+        <h2 className='subtitle'>Contacto</h2>
+        <p>¿Tienes alguna consulta? Ponte en contacto con nosotros y te atenderemos lo antes posible.</p>
+      </div>
+      <Col md={8} lg={6} className="mx-auto">
+        <form onSubmit={sendMsg}>
+          <div className="mb-3">
+            <label htmlFor="contactName" className="form-label">Nombre</label>
+            <input
+              type="text"
+              className="form-control"
+              id="contactName"
+              name="nombre"
+              value={msgForm.nombre}
+              onChange={handleMsgChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="contactEmail" className="form-label">Correo electrónico</label>
+            <input
+              type="email"
+              className="form-control"
+              id="contactEmail"
+              name="email"
+              value={msgForm.email}
+              onChange={handleMsgChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="contactPhone" className="form-label">Teléfono</label>
+            <input
+              type="tel"
+              className="form-control"
+              id="contactPhone"
+              name="telefono"
+              value={msgForm.telefono}
+              onChange={handleMsgChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="contactMsg" className="form-label">Mensaje</label>
+            <textarea
+              className="form-control"
+              id="contactMsg"
+              name="mensaje"
+              value={msgForm.mensaje}
+              onChange={handleMsgChange}
+              rows="4"
+              placeholder="Escribe tu consulta aquí..."
+              required
+            />
+          </div>
 
-            <button type="submit" className="btn btn-primary fw-bolder">Enviar</button>
-          </form>
-        </Col>
-      </Row>
+          <button type="submit" className="btn btn-primary fw-bolder">Enviar</button>
+        </form>
+      </Col>
+    </Row>
       <hr />
       {/* Seccion Ubicación*/}
       <Row className='py-5'>
