@@ -1,22 +1,7 @@
 import React, { useState } from 'react';
 import { Carousel, Image, Row, Col } from 'react-bootstrap';
 
-const images = [
-  {
-    src: 'https://glamorous-design.org/wp-content/uploads/2024/11/piclumen-1731932590678.png',
-    alt: 'Slide 1',
-  },
-  {
-    src: 'https://www.marseilleshotel.com/wp-content/uploads/2019/10/Marseilles-Hotel-20210427-Suite-Jacuzzi-King-KBSTJQ-1920L-10-1024x595.jpg',
-    alt: 'Slide 2',
-  },
-  {
-    src: 'https://cdn.choosechicago.com/uploads/2020/08/swissotel-presidential-office-1800x828.png',
-    alt: 'Slide 3',
-  },
-];
-
-const CarouselWithThumbnails = () => {
+const CarouselWithThumbnails = ({imagenes}) => {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {
@@ -27,12 +12,12 @@ const CarouselWithThumbnails = () => {
     <div>
       {/* Main Carousel */}
       <Carousel activeIndex={index} onSelect={handleSelect} className="mb-3">
-        {images.map((image, i) => (
+        {imagenes.map((image, i) => (
           <Carousel.Item key={i}>
             <img
               className="d-block w-100"
-              src={image.src}
-              alt={image.alt}
+              src={image.url}
+              alt="imagenhotel"
               style={{ maxHeight: '500px', objectFit: 'cover' }}
             />
           </Carousel.Item>
@@ -41,11 +26,11 @@ const CarouselWithThumbnails = () => {
 
       {/* Thumbnails */}
       <Row className="justify-content-center">
-        {images.map((image, i) => (
+        {imagenes.map((image, i) => (
           <Col xs={3} md={2} key={i}>
             <Image
-              src={image.src}
-              alt={image.alt}
+              src={image.url}
+              alt="imagenhotel"
               thumbnail
               onClick={() => handleSelect(i)}
               style={{
