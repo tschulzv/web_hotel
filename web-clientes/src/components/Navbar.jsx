@@ -1,18 +1,26 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo_hotel from '../img/logo_hotel.png';
-const Navigation = () => {
-  /* funcion para scrollear a secciones especificas de la pagina
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };*/
+import axios from "../config/axiosConfig"
 
+const Navigation = () => {
+  const [tipos, setTipos] = useState([]);
+
+  useEffect(() => {
+    const fetchTipos = async () => {
+      try {
+        const response = await axios.get(`/TiposHabitaciones`);
+        setTipos(response.data);
+      } catch (err) {
+        console.log('Error al cargar los tipos de habitación');
+      } 
+    };
+    fetchTipos();
+  }, []);
+  
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="bg-body-primary">
     <Container>
@@ -22,9 +30,12 @@ const Navigation = () => {
         <Nav className="ms-auto">
           <Nav.Link href="/">Inicio</Nav.Link>
           <NavDropdown title="Habitaciones" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/habitaciones/estandar">Estandar</NavDropdown.Item>
-            <NavDropdown.Item href="/habitaciones/deluxe">Deluxe</NavDropdown.Item>
-            <NavDropdown.Item href="/habitaciones/presidencial">Presidencial</NavDropdown.Item>
+            {
+              tipos?.map((t)=>(
+                <NavDropdown.Item href={`/habitaciones/${t.id}`}>{t.nombre}</NavDropdown.Item>
+
+              ))
+            }
           </NavDropdown>
           <Nav.Link href="/restaurante">Restaurante</Nav.Link>
         </Nav>
