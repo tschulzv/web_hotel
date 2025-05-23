@@ -11,7 +11,7 @@ import restaurante from '../img/restaurante.jpg';
 import boda from '../img/boda.jpg';
 import axios from '../config/axiosConfig'
 const Home = () => {
-  const [selectedDate, setSelectedDate] = useState({ checkIn: '', checkOut: '', adults: 0, children: 0 });
+  const [selectedDate, setSelectedDate] = useState({ checkIn: '', checkOut: '' });
   const [rooms, setRooms] = useState([{ adults: 1, children: 0 }]);
   const navigate = useNavigate();
   const [showRoomSelector, setShowRoomSelector] = useState(false);
@@ -47,10 +47,16 @@ const Home = () => {
 
   const searchTariffs = (e) => {
     e.preventDefault();
-    const { checkIn, checkOut, adults, children } = selectedDate;
+    const { checkIn, checkOut } = selectedDate;
     const roomsQuery = encodeURIComponent(JSON.stringify(rooms));
-    navigate(`/habitaciones?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&children=${children}&rooms=${roomsQuery}`);
+    if (!checkIn || !checkOut) {
+      alert("Por favor selecciona fechas de entrada y salida.");
+      return;
+    }
+
+    navigate(`/habitaciones?checkIn=${checkIn}&checkOut=${checkOut}&rooms=${roomsQuery}`);
   };
+
 
   const toggleRoomSelector = () => {
     setShowRoomSelector(!showRoomSelector);
@@ -63,7 +69,9 @@ const Home = () => {
   };
 
   const addRoom = () => {
-    setRooms([...rooms, { adults: 1, children: 0 }]);
+    if (rooms.length < 5) {
+      setRooms([...rooms, { adults: 1, children: 0 }]);
+    }
   };
 
   const removeRoom = (index) => {
@@ -83,9 +91,9 @@ const Home = () => {
           <Image src={hotel} rounded fluid />
         </Col>
       </Row>
-     
-      <BookingForm handleInputChange={handleInputChange} rooms={rooms} showRoomSelector={showRoomSelector} toggleRoomSelector={toggleRoomSelector} handleRoomChange={handleRoomChange} addRoom={addRoom} removeRoom={removeRoom} searchTariffs={searchTariffs}/>
-      
+
+      <BookingForm handleInputChange={handleInputChange} rooms={rooms} showRoomSelector={showRoomSelector} toggleRoomSelector={toggleRoomSelector} handleRoomChange={handleRoomChange} addRoom={addRoom} removeRoom={removeRoom} searchTariffs={searchTariffs} />
+
       <Row className="py-5 d-flex align-items-center justify-content-center w-100">
         <div className="text-center mb-4">
           <h2 className='subtitle'>Nuestros Servicios</h2>
