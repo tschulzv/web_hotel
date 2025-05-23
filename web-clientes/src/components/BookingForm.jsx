@@ -20,6 +20,7 @@ function BookingForm({handleInputChange, showRoomSelector, toggleRoomSelector, h
             id="check-in"
             className="w-100 form-control"
             onChange={handleInputChange}
+            min={new Date().toISOString().split('T')[0]} // Evita fechas anteriores a hoy
           />
         </div>
         <div className="w-50">
@@ -30,6 +31,7 @@ function BookingForm({handleInputChange, showRoomSelector, toggleRoomSelector, h
             id="check-out"
             className="w-100 form-control"
             onChange={handleInputChange}
+            min={new Date().toISOString().split('T')[0]} // Evita fechas anteriores a hoy
           />
         </div>
       </div>
