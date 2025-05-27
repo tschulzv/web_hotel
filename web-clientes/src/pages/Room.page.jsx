@@ -43,10 +43,16 @@ const Room = () => {
     setSelectedDate((prev) => ({ ...prev, [name]: value }));
   };
 
-  const searchTariffs = (e) => {
+ const searchTariffs = (e) => {
     e.preventDefault();
-    const { checkIn, checkOut, adults, children } = selectedDate;
-    navigate(`/habitaciones?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&children=${children}&type=${tipo.nombre}`);
+    const { checkIn, checkOut } = selectedDate;
+    const roomsQuery = encodeURIComponent(JSON.stringify(rooms));
+    if (!checkIn || !checkOut) {
+      alert("Por favor selecciona fechas de entrada y salida.");
+      return;
+    }
+
+    navigate(`/habitaciones?checkIn=${checkIn}&checkOut=${checkOut}&rooms=${roomsQuery}`);
   };
 
   const toggleRoomSelector = () => {
