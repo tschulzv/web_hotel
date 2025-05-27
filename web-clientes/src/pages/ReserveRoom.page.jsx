@@ -142,6 +142,9 @@ const ReserveRoom = () => {
                     activo: true,
                 })),
             },
+            informacionSolicitud: {
+                tipo: 'Reserva'
+            }
         };
 
         console.log('Enviando a API:', JSON.stringify(reservaClientePayload, null, 2));
