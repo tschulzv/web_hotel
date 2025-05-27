@@ -133,14 +133,17 @@ const ReserveRoom = () => {
                 llegadaEstimada: `${horaLlegada}:00`, // Formato HH:mm:ss para TimeOnly
                 comentarios: comentariosCliente,
                 estadoId: 1,
-                detalles: detallesReserva.map((detalle, i) => ({
-                    ...detalle,
-                    tipoHabitacionId: parseInt(detalle.id),
-                    cantidadAdultos: habitacionesIniciales[i]?.adults || 1,
-                    cantidadNinos: habitacionesIniciales[i]?.children || 0,
-                    pensionId: pensionSelections[i] || null,
-                    activo: true,
-                })),
+                detalles: detallesReserva.map((detalle, i) => {
+                    const pensionId = pensionSelections[i];
+                    return {
+                        ...detalle,
+                        tipoHabitacionId: parseInt(detalle.id),
+                        cantidadAdultos: habitacionesIniciales[i]?.adults || 1,
+                        cantidadNinos: habitacionesIniciales[i]?.children || 0,
+                        ...(pensionId ? { pensionId: parseInt(pensionId) } : {}),
+                        activo: true,
+                    };
+                }),
             },
         };
 
