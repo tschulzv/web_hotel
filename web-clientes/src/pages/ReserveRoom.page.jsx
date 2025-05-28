@@ -353,7 +353,7 @@ const ReserveRoom = () => {
                                     </Col>
                                     {/* Columna para el precio */}
                                     <Col xs={3} className="text-right">
-                                        <p className="mb-0 small">₲ {(tipo?.precioBase || 0) * nights}</p>
+                                        <p className="mb-0 small">US$ {(tipo?.precioBase || 0) * nights}</p>
                                     </Col>
                                 </Row>
                             );
@@ -361,19 +361,19 @@ const ReserveRoom = () => {
                         <hr />
                         <Row>
                             <Col xs={8}><p className="small">Subtotal</p></Col>
-                            <Col xs={4}><p className="small">₲ {subtotal}</p></Col>
+                            <Col xs={4}><p className="small">US$ {subtotal}</p></Col>
                         </Row>
                         <Row>
                             <Col xs={8}><p className="small">Adicionales</p></Col>
-                            <Col xs={4}><p className="small">₲ {adicionales}</p></Col>
+                            <Col xs={4}><p className="small">US$ {adicionales}</p></Col>
                         </Row>
                         <Row>
                             <Col xs={8}><p className="small">Impuestos (10%)</p></Col>
-                            <Col xs={4}><p className="small">₲ {impuestos.toFixed(2)}</p></Col>
+                            <Col xs={4}><p className="small">US$ {impuestos.toFixed(2)}</p></Col>
                         </Row>
                         <Row>
                             <Col xs={8}><p className="small font-weight-bold">Total</p></Col>
-                            <Col xs={4}><p className="small font-weight-bold">₲ {total.toFixed(2)}</p></Col>
+                            <Col xs={4}><p className="small font-weight-bold">US$ {total.toFixed(2)}</p></Col>
                         </Row>
                     </Col>
                 </Row>
