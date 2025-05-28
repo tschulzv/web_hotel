@@ -160,7 +160,7 @@ const ReserveRoom = () => {
             });
 
             console.log('Respuesta API:', response.data);
-            toast.success(response.data.mensaje || 'Reserva solicitada con éxito!');
+            toast.success('Reserva solicitada con éxito!');
 
 
 
@@ -175,21 +175,9 @@ const ReserveRoom = () => {
             setHoraLlegada('');
             setComentariosCliente('');
         } catch (error) {
-            if (error.response) {
-                const errorData = error.response.data;
-                console.error('Error API:', errorData);
-                if (errorData && errorData.errores) {
-                    Object.values(errorData.errores).flat().forEach(err => toast.error(err));
-                } else if (errorData && errorData.detalle) {
-                    toast.error(`Error del servidor: ${errorData.detalle}`);
-                } else {
-                    toast.error(`Error: ${error.response.status} - ${error.response.statusText}`);
-                }
-            } else {
-                console.error('Error en la solicitud axios:', error);
-                toast.error('Error de conexión al intentar realizar la reserva.');
-            }
-        }
+            console.error('Error API:', error);
+            toast.error('Hubo un error al procesar la reserva. Intente nuevamente.');
+        };
     };
 
     return (
