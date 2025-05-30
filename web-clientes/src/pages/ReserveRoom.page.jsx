@@ -139,7 +139,7 @@ const ReserveRoom = () => {
                         ...detalle,
                         tipoHabitacionId: parseInt(detalle.id),
                         cantidadAdultos: habitacionesIniciales[i]?.adults || 1,
-                        cantidadNinos: habitacionesIniciales[i]?.children || 0,
+                        cantidadNinhos: habitacionesIniciales[i]?.children || 0,
                         ...(pensionId ? { pensionId: parseInt(pensionId) } : {}),
                         activo: true,
                     };
