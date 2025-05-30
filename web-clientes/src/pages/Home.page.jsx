@@ -10,6 +10,8 @@ import hotel from '../img/hotel.jpg';
 import restaurante from '../img/restaurante.jpg';
 import boda from '../img/boda.jpg';
 import axios from '../config/axiosConfig'
+import { toast } from 'react-toastify';
+
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState({ checkIn: '', checkOut: '' });
   const [rooms, setRooms] = useState([{ adults: 1, children: 0 }]);
@@ -27,11 +29,12 @@ const Home = () => {
         telefono: msgForm.telefono,
         mensaje: msgForm.mensaje
       });
-      console.log(response);
+      toast.success("Consulta enviada con éxito.")
       setMsgForm({ nombre: '', email: '', telefono: '', mensaje: '' });
 
     } catch (error) {
       console.error('Error enviando datos:', error);
+      toast.error("Error enviando la consulta")
     }
   }
 

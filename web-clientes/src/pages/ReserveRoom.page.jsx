@@ -1,7 +1,7 @@
 import axios from '../config/axiosConfig';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Container, Row, Col, Dropdown, Button, Form } from 'react-bootstrap';
-import { toast, ToastContainer as ReactToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import countryList from 'react-select-country-list'
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from 'react-router-dom';
@@ -390,7 +390,6 @@ const ReserveRoom = () => {
                     </Col>
                 </Row>
             </form>
-            <ReactToastContainer position="top-right" autoClose={3000} hideProgressBar />
         </Container>
     );
 };
