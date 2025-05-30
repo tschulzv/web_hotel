@@ -139,7 +139,7 @@ const ReserveRoom = () => {
                         ...detalle,
                         tipoHabitacionId: parseInt(detalle.id),
                         cantidadAdultos: habitacionesIniciales[i]?.adults || 1,
-                        cantidadNinos: habitacionesIniciales[i]?.children || 0,
+                        cantidadNinhos: habitacionesIniciales[i]?.children || 0,
                         ...(pensionId ? { pensionId: parseInt(pensionId) } : {}),
                         activo: true,
                     };
@@ -160,7 +160,7 @@ const ReserveRoom = () => {
             });
 
             console.log('Respuesta API:', response.data);
-            toast.success(response.data.mensaje || 'Reserva solicitada con éxito!');
+            toast.success('Reserva solicitada con éxito!');
 
 
 
@@ -175,21 +175,9 @@ const ReserveRoom = () => {
             setHoraLlegada('');
             setComentariosCliente('');
         } catch (error) {
-            if (error.response) {
-                const errorData = error.response.data;
-                console.error('Error API:', errorData);
-                if (errorData && errorData.errores) {
-                    Object.values(errorData.errores).flat().forEach(err => toast.error(err));
-                } else if (errorData && errorData.detalle) {
-                    toast.error(`Error del servidor: ${errorData.detalle}`);
-                } else {
-                    toast.error(`Error: ${error.response.status} - ${error.response.statusText}`);
-                }
-            } else {
-                console.error('Error en la solicitud axios:', error);
-                toast.error('Error de conexión al intentar realizar la reserva.');
-            }
-        }
+            console.error('Error API:', error);
+            toast.error('Hubo un error al procesar la reserva. Intente nuevamente.');
+        };
     };
 
     return (
@@ -365,7 +353,7 @@ const ReserveRoom = () => {
                                     </Col>
                                     {/* Columna para el precio */}
                                     <Col xs={3} className="text-right">
-                                        <p className="mb-0 small">₲ {(tipo?.precioBase || 0) * nights}</p>
+                                        <p className="mb-0 small">US$ {(tipo?.precioBase || 0) * nights}</p>
                                     </Col>
                                 </Row>
                             );
@@ -373,19 +361,19 @@ const ReserveRoom = () => {
                         <hr />
                         <Row>
                             <Col xs={8}><p className="small">Subtotal</p></Col>
-                            <Col xs={4}><p className="small">₲ {subtotal}</p></Col>
+                            <Col xs={4}><p className="small">US$ {subtotal}</p></Col>
                         </Row>
                         <Row>
                             <Col xs={8}><p className="small">Adicionales</p></Col>
-                            <Col xs={4}><p className="small">₲ {adicionales}</p></Col>
+                            <Col xs={4}><p className="small">US$ {adicionales}</p></Col>
                         </Row>
                         <Row>
                             <Col xs={8}><p className="small">Impuestos (10%)</p></Col>
-                            <Col xs={4}><p className="small">₲ {impuestos.toFixed(2)}</p></Col>
+                            <Col xs={4}><p className="small">US$ {impuestos.toFixed(2)}</p></Col>
                         </Row>
                         <Row>
                             <Col xs={8}><p className="small font-weight-bold">Total</p></Col>
-                            <Col xs={4}><p className="small font-weight-bold">₲ {total.toFixed(2)}</p></Col>
+                            <Col xs={4}><p className="small font-weight-bold">US$ {total.toFixed(2)}</p></Col>
                         </Row>
                     </Col>
                 </Row>
