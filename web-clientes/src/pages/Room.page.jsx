@@ -113,22 +113,25 @@ const Room = () => {
       </Row>
 
       <hr/>
-      <Row className="py-5 d-flex align-items-center justify-content-center w-100">
-          <div className="text-center mb-4">
-            <h2 className='subtitle'>Características</h2>
-          </div>
-          {
-            tipo.servicios?.map((s) => (
-          <Col>
-            <GoogleIconFrame icon={s.iconName} iconSize="2rem" frameSize="50" title={s.nombre} className="py-3"></GoogleIconFrame>
-          </Col>
-            ))
-          }
-        
-        </Row>
+     <Row className="py-5 justify-content-center w-100">
+      <div className="text-center mb-4 w-100">
+        <h2 className="subtitle">Características</h2>
+      </div>
+      {tipo.servicios?.map((s, index) => (
+        <Col key={index} xs={6} sm={4} md={3} lg={2} className="d-flex justify-content-center">
+          <GoogleIconFrame
+            icon={s.iconName}
+            iconSize="2rem"
+            frameSize="50"
+            title={s.nombre}
+            className="py-3"
+          />
+        </Col>
+      ))}
+    </Row>
 
     </Container>
-           </>
+   </>
  
   );
 

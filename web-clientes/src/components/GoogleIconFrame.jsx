@@ -18,7 +18,7 @@ const GoogleIconFrame = ({icon, iconSize, frameSize, title, text}) => {
     <Container className="py-3">
         <Row className="d-flex align-items-center justify-content-center">
             <Col md={3}>
-              <div className='bg-light-gray rounded-corners d-flex align-items-center justify-content-center' style={{ maxWidth: `${frameSize}px`, height: `${frameSize}px` }}>
+              <div className='bg-light-gray rounded-corners d-flex align-items-center justify-content-center' style={{ width: `${frameSize}px`, height: `${frameSize}px` }}>
               <span className="material-icons" style={{ fontSize: `${iconSize}` }}>
                 {icon}
               </span>

@@ -6,19 +6,15 @@ function BookingForm({ handleInputChange: propHandleInputChange, showRoomSelecto
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
 
-  // Effect to ensure checkOut is never before checkIn
   useEffect(() => {
-    if (checkIn && checkOut && new Date(checkOut) < new Date(checkIn)) {
-      // If checkOut is before checkIn, set checkOut to checkIn
-      setCheckOut(checkIn);
-      // Also, call the propHandleInputChange to update the parent's state
-      propHandleInputChange({ target: { name: 'checkOut', value: checkIn } });
-    } else if (checkIn && !checkOut) {
-      // If checkIn is set but checkOut is not, set checkOut to checkIn by default
+  if (checkIn) {
+    // Si checkOut no existe o es menor que checkIn, lo actualizamos
+    if (!checkOut || new Date(checkOut) < new Date(checkIn)) {
       setCheckOut(checkIn);
       propHandleInputChange({ target: { name: 'checkOut', value: checkIn } });
     }
-  }, [checkIn, checkOut, propHandleInputChange]); // Added propHandleInputChange to dependency array
+  }
+  }, [checkIn]);
 
   const handleCheckInChange = (e) => {
     const value = e.target.value;
