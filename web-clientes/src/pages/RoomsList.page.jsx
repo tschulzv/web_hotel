@@ -54,11 +54,12 @@ export default function RoomsList() {
                 checkIn: toISODate(inDate),
                 checkOut: toISODate(outDate),
                 habitacionesSolicitadas: [
-                    { adultos: habitaciones[idx].adults, ninos: habitaciones[idx].children }
+                    { adultos: habitaciones[idx].adults, ninos: habitaciones[idx].children, tipoHabitacionId: habitaciones[idx].roomTypeId }
                 ]
             };
+            //console.log("request", req)
             const res = await axios.post("Habitacions/disponibles", req);
-            console.log(res.data);
+            //console.log(res.data);
             const data = res.data
                 .map(rt => {
                     const alreadySelected = selectedRooms

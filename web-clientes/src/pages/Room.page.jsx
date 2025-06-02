@@ -7,6 +7,7 @@ import BookingForm from '../components/BookingForm';
 import CarouselWithThumbnails from '../components/CarouselWithThumbnails';
 import GoogleIconFrame from '../components/GoogleIconFrame';
 import axios from "../config/axiosConfig"
+import { toast } from 'react-toastify';
 
 
 // más adelante, cambiar a q obtenga los datos de la db
@@ -34,7 +35,7 @@ const Room = () => {
 
 
   const [selectedDate, setSelectedDate] = useState({ checkIn: '', checkOut: '', adults: 0, children: 0 });
-  const [rooms, setRooms] = useState([{ adults: 1, children: 0 }]);
+  const [rooms, setRooms] = useState([{ adults: 1, children: 0, roomTypeId: id }]);
   const navigate = useNavigate();
   const [showRoomSelector, setShowRoomSelector] = useState(false);
 
@@ -46,12 +47,21 @@ const Room = () => {
  const searchTariffs = (e) => {
     e.preventDefault();
     const { checkIn, checkOut } = selectedDate;
-    const roomsQuery = encodeURIComponent(JSON.stringify(rooms));
-    if (!checkIn || !checkOut) {
-      alert("Por favor selecciona fechas de entrada y salida.");
+    const todayDate = new Date().setHours(0, 0, 0, 0);
+    const selectedCheckin = new Date(checkIn).setHours(0, 0, 0, 0);
+    const selectedCheckout = new Date(checkOut).setHours(0, 0, 0, 0);
+
+    if (selectedCheckin < todayDate || selectedCheckout < selectedCheckin){
+       toast.error("Las fechas seleccionadas son inválidas.");
       return;
     }
 
+    if (!checkIn || !checkOut) {
+      toast.error("Por favor selecciona fechas de entrada y salida.");
+      return;
+    }
+    
+    const roomsQuery = encodeURIComponent(JSON.stringify(rooms));
     navigate(`/habitaciones?checkIn=${checkIn}&checkOut=${checkOut}&rooms=${roomsQuery}`);
   };
 
@@ -66,7 +76,7 @@ const Room = () => {
   };
 
   const addRoom = () => {
-    setRooms([...rooms, { adults: 1, children: 0 }]);
+    setRooms([...rooms, { adults: 1, children: 0, roomTypeId: id}]);
   };
 
   const removeRoom = (index) => {

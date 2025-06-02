@@ -51,12 +51,21 @@ const Home = () => {
   const searchTariffs = (e) => {
     e.preventDefault();
     const { checkIn, checkOut } = selectedDate;
-    const roomsQuery = encodeURIComponent(JSON.stringify(rooms));
+
+    const todayDate = new Date().setHours(0, 0, 0, 0);
+    const selectedCheckin = new Date(checkIn).setHours(0, 0, 0, 0);
+    const selectedCheckout = new Date(checkOut).setHours(0, 0, 0, 0);
+    
+    if (selectedCheckin < todayDate || selectedCheckout < selectedCheckin){
+      toast.error("Las fechas seleccionadas son inválidas.");
+      return;
+    }
     if (!checkIn || !checkOut) {
       alert("Por favor selecciona fechas de entrada y salida.");
       return;
     }
-
+    
+    const roomsQuery = encodeURIComponent(JSON.stringify(rooms));
     navigate(`/habitaciones?checkIn=${checkIn}&checkOut=${checkOut}&rooms=${roomsQuery}`);
   };
 
