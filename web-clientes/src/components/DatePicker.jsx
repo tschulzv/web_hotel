@@ -55,6 +55,7 @@ const DatePicker = ({ ranges, onChange }) => {
             moveRangeOnFirstSelection={false}
             months={2}
             direction="horizontal"
+            minDate={new Date()}
           />
         </div>
       )}
