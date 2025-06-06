@@ -261,7 +261,7 @@ const ReserveRoom = () => {
                                 <PhoneInput
                                     name="num_telefono"
                                     id="num_telefono"
-                                    inputStyle={{ width: '100%' }}
+                                    inputStyle={{ width: '66%' }}
                                     className="mb-3"
                                     value={numTelefono}
                                     onChange={(phone) => setNumTelefono(phone)}
