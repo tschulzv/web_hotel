@@ -5,6 +5,9 @@ import { toast } from 'react-toastify';
 import countryList from 'react-select-country-list'
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from 'react-router-dom';
+import Select from 'react-select'
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 
 const ReserveRoom = () => {
     const location = useLocation();
@@ -225,20 +228,19 @@ const ReserveRoom = () => {
                             </Col>
                             <Col xs={12} sm={6} md={6}>
                                 <label>Tipo de Documento</label>
-                                <Dropdown onSelect={(eventKey) => {
-                                    const selected = listaTiposDocumento.find(td => td.id.toString() === eventKey);
-                                    setTipoDocumentoId(selected ? selected.id : '');
-                                    setTipoDocumentoNombre(selected ? selected.nombre : 'Seleccionar');
-                                }}>
-                                    <Dropdown.Toggle variant="outline-secondary" id="dropdown-tipo-doc">
-                                        {tipoDocumentoNombre || 'Seleccionar'}
-                                    </Dropdown.Toggle>
-                                    <Dropdown.Menu className="w-100">
-                                        {listaTiposDocumento.map(doc => (
-                                            <Dropdown.Item key={doc.id} eventKey={doc.id.toString()}>{doc.nombre}</Dropdown.Item>
-                                        ))}
-                                    </Dropdown.Menu>
-                                </Dropdown>
+                                <Select
+                                    placeholder="Seleccionar tipo de documento"
+                                    options={listaTiposDocumento}
+                                    value={listaTiposDocumento.find(td => td.id === tipoDocumentoId)}
+                                    onChange={(selected) => {
+                                        setTipoDocumentoId(selected ? selected.id : '');
+                                        setTipoDocumentoNombre(selected ? selected.nombre : '');
+                                    }}
+                                    className="w-75"
+                                    isSearchable={true}
+                                    getOptionLabel={option => option.nombre}
+                                    getOptionValue={option => option.id}
+                                />
                             </Col>
                         </Row>
 
@@ -256,13 +258,14 @@ const ReserveRoom = () => {
                             </Col>
                             <Col xs={12} sm={6} md={6}>
                                 <label htmlFor="num_telefono">Número de Teléfono</label>
-                                <input
+                                <PhoneInput
                                     name="num_telefono"
-                                    type="tel"
                                     id="num_telefono"
-                                    className="mb-3 w-75 form-control"
+                                    inputStyle={{ width: '100%' }}
+                                    className="mb-3"
                                     value={numTelefono}
-                                    onChange={e => setNumTelefono(e.target.value)}
+                                    onChange={(phone) => setNumTelefono(phone)}
+                                    defaultCountry="py"
                                 />
                             </Col>
                         </Row>
@@ -270,16 +273,16 @@ const ReserveRoom = () => {
                         <Row className="mb-4">
                             <Col xs={12} sm={6} md={6}>
                                 <label>País</label>
-                                <Dropdown onSelect={setPais}>
-                                    <Dropdown.Toggle variant="outline-secondary" id="dropdown-pais">
-                                        {pais || 'Seleccionar'}
-                                    </Dropdown.Toggle>
-                                    <Dropdown.Menu style={{ maxHeight: "200px", overflowY: "auto" }}>
-                                        {countries.map(p => (
-                                            <Dropdown.Item key={p.value} eventKey={p.label}>{p.label}</Dropdown.Item>
-                                        ))}
-                                    </Dropdown.Menu>
-                                </Dropdown>
+                                <Select
+                                    placeholder="Seleccionar país"
+                                    options={countries}
+                                    value={countries.find(c => c.label === pais)}
+                                    onChange={(option) => setPais(option.label)}
+                                    className="w-75"
+                                    isSearchable={true}
+                                    getOptionLabel={option => option.label}
+                                    getOptionValue={option => option.value}
+                                />
                             </Col>
                         </Row>
 
