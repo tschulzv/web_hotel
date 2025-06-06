@@ -6,6 +6,8 @@ import countryList from 'react-select-country-list'
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from 'react-router-dom';
 import Select from 'react-select'
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 
 const ReserveRoom = () => {
     const location = useLocation();
@@ -256,13 +258,14 @@ const ReserveRoom = () => {
                             </Col>
                             <Col xs={12} sm={6} md={6}>
                                 <label htmlFor="num_telefono">Número de Teléfono</label>
-                                <input
+                                <PhoneInput
                                     name="num_telefono"
-                                    type="tel"
                                     id="num_telefono"
-                                    className="mb-3 w-75 form-control"
+                                    inputStyle={{ width: '100%' }}
+                                    className="mb-3"
                                     value={numTelefono}
-                                    onChange={e => setNumTelefono(e.target.value)}
+                                    onChange={(phone) => setNumTelefono(phone)}
+                                    defaultCountry="py"
                                 />
                             </Col>
                         </Row>
